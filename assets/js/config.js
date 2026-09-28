@@ -5,5 +5,5 @@ window.MAXI_CONFIG = {
   USE_MOCK: true,
   TIMEOUT_MS: 30000,
   /* Set true jika halamannya sudah dibuat. Yang false tampil "Segera" dan tidak bisa diklik. */
-  FEATURES: { attendance: true, leave: true, permission: true, overtime: true, activity: false, approval: true, employees: true, team: true, holidays: true, settings: true }
+  FEATURES: { attendance: true, leave: true, permission: true, overtime: true, activity: true, approval: true, employees: true, team: true, holidays: true, settings: true }
 };

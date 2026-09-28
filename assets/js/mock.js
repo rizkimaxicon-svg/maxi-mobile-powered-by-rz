@@ -123,6 +123,10 @@
     ['leave_annual_entitlement', '12', 'Number', 'Jatah cuti tahunan (hari)'], ['leave_carry_over_enabled', 'FALSE', 'Boolean', 'Sisa cuti boleh dibawa ke tahun berikutnya'], ['leave_carry_over_max_days', '0', 'Number', 'Batas maksimal hari cuti yang dibawa'],
     ['leave_last_reset_year', '', 'Text', 'Tahun terakhir pergantian tahun cuti (diisi sistem)'], ['leave_types', 'Cuti Tahunan,Cuti Khusus', 'List', 'Daftar jenis cuti'], ['session_duration_hours', '12', 'Number', 'Lama sesi login (jam)']];
   function cfg(e, k) { db.set = db.set || SET.map(function (r) { return { setting_key: r[0], setting_value: r[1], value_type: r[2], description: r[3] }; }); return db.set.filter(function (r) { return r.setting_key === k; })[0]; }
+  H['activity.list'] = function (e, p) {
+    var all = db.log.filter(function (l) { return l.employee_id === e.employee_id; }).reverse(), o = +p.offset || 0, l = +p.limit || 20;
+    return { items: all.slice(o, o + l), has_more: all.length > o + l };
+  };
   H['holidays.list'] = function (e, p) { db.hol = db.hol || []; return { items: db.hol.filter(function (h) { return (!p.year || h.date.slice(0, 4) === String(p.year)) && (e.role === 'Admin' || h.status === 'Active'); }).sort(function (a, b) { return a.date < b.date ? -1 : 1; }) }; };
   H['admin.holidays.upsert'] = function (e, p) {
     adm(e); db.hol = db.hol || []; if (!p.date || !(p.holiday_name || '').trim()) throw err('VALIDATION', 'Tanggal dan nama wajib diisi.');
