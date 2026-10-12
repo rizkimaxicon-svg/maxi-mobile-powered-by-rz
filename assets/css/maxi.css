@@ -19,7 +19,8 @@ input:focus{border-color:var(--k)}
 .alert{margin:16px 0 0;padding:12px 14px;border-radius:10px;background:#fdecec;color:var(--no);font-weight:600}.alert.info{background:#fff7cc;color:#5c4a00}
 /* login & centered pages */
 .login{min-height:100vh;display:grid;grid-template-columns:1fr}
-.login-side{display:none;background:var(--k);color:var(--w);padding:56px;position:relative;overflow:hidden}
+.login-side{display:none;background:var(--k);color:var(--w);position:relative;overflow:hidden}
+.login-side .lb-content{position:relative;z-index:1;padding:56px}
 .login-side:after{content:"";position:absolute;right:-70px;bottom:-70px;width:280px;height:280px;background:var(--y)}
 .login-side h2{color:var(--w);font-size:34px;max-width:12ch;margin-bottom:28px}
 .login-side ul{list-style:none;margin:0;padding:0;display:grid;gap:14px;font-size:16px}
